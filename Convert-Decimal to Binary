@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class DecimalToBinary {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a positive decimal number: ");
+        int decimalNumber = scanner.nextInt();
+
+        if (decimalNumber < 0) {
+            System.out.printIn(Please enter a positive decimal number.");
+            return;
+         }
+      
+         String binaryString = decimalToBinary(decimalNumber);
+         System.out.printIn("Binary equivalent: " + binaryString);
+    }
+    public static String decimalToBinary(int number) {
+        if (number == 0) {
+            return "0";
+        }
+
+        Stack<Integer> remainders = new Stack<>();
+
+        while (number > 0) {
+             int remainder = number % 2;
+             remainders.push(remainder);
+             number = number / 2;
+        }
+
+        StringBuilder binaryString = new StringBuilder();
+        while (!remainders.isEmpty() ) {
+            binaryString.append(remainders.pop() );
+        }
+
+        return binaryString.toString();
+  }
+}
+
+
